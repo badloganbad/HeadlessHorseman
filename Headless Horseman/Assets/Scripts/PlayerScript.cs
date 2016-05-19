@@ -18,6 +18,9 @@ public class PlayerScript: MonoBehaviour {
 	float MaxTakeDowns = 10;
 	public float currentTakeDowns = 0;
 
+	//boosts/ horseshoes
+	int currentBoosts = 0;
+
 	public Image H_front; // for health front
 	public Image H_middle;
 	public Image H_back;
@@ -26,15 +29,23 @@ public class PlayerScript: MonoBehaviour {
 	public Image T_middle;
 	public Image T_back;
 
+	public Image[] horseshoe;
+
 	void GotVengeance()
 	{
-		currentTakeDowns += 1;
+		currentTakeDowns += 2;
 		T_middle.fillAmount = currentTakeDowns / MaxTakeDowns;
 	}
 
 	void GotPickup()
 	{
-		
+		if (currentBoosts < 4) {
+			currentBoosts += 1;
+			for (int i = 0; i < currentBoosts; i++) {
+				if (horseshoe [i].enabled == false)
+					horseshoe [i].enabled = true;
+			}
+		}
 	}
 
 	void GotHit()
@@ -76,6 +87,13 @@ public class PlayerScript: MonoBehaviour {
 		
 		if (Input.GetKey(KeyCode.D))
 			transform.Rotate (0, 100*Time.deltaTime, 0);
+		
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			if (currentBoosts > 0) {
+					horseshoe [currentBoosts - 1].enabled = false;
+					currentBoosts -= 1;
+			}
+		}
 
 		//update variables
 		if (velocity >= MAXSPEED)
