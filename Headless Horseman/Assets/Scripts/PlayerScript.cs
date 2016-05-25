@@ -74,19 +74,6 @@ public class PlayerScript: MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		//check for player inputs
-		if (Input.GetKey (KeyCode.W))
-			velocity += PLAYERSPEED * Time.deltaTime;
-
-		if (Input.GetKey (KeyCode.A))
-			transform.Rotate (0, -100*Time.deltaTime, 0);
-
-		if (Input.GetKey(KeyCode.S))
-			velocity -= PLAYERSPEED/2 * Time.deltaTime;
-		
-		if (Input.GetKey(KeyCode.D))
-			transform.Rotate (0, 100*Time.deltaTime, 0);
 		
 		if (Input.GetKeyDown(KeyCode.Space)) {
 			if (currentBoosts > 0) {
@@ -94,18 +81,6 @@ public class PlayerScript: MonoBehaviour {
 					currentBoosts -= 1;
 			}
 		}
-
-		//update variables
-		if (velocity >= MAXSPEED)
-			velocity = MAXSPEED;
-		if (velocity <= MINSPEED)
-			velocity = MINSPEED;
-
-		//decay for slowing down - player lets off the keys
-		velocity *= .975f;
-
-		//update player position based on velocity
-		transform.Translate(velocity*Vector3.forward * Time.deltaTime);
 	
 	}
 }

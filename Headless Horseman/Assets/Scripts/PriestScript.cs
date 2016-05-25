@@ -12,6 +12,7 @@ public class PriestScript : MonoBehaviour {
 		if (other.tag == "Player") {
 			other.SendMessage("GotHit");
 		}
+		Destroy (gameObject);
 	}
 
 	// Use this for initialization

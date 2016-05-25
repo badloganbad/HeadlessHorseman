@@ -29,3 +29,4 @@
 /Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/bin/Debug/Assembly-UnityScript-firstpass.dll
