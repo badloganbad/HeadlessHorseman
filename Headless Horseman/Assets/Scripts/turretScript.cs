@@ -30,14 +30,24 @@ public class turretScript : MonoBehaviour {
 
 	//public Rigidbody pickup;
 
-	void OnCollisionEnter(Collision other){
+	void OnTriggerEnter(Collider other){
 
+        if (other.tag == "Player")
+        {
+            turretHealth -= 1;
+            if (turretHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
 
 
 		}
 
 	// Use this for initialization
 	void Start () {
+
+        turretHealth = Random.Range(2, 4);
 
 	}
 	
