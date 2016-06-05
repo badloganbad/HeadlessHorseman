@@ -1,10 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PriestScript : MonoBehaviour {
+public class PriestScript : MonoBehaviour
+{
 
+    public float priestHealth;
 
+    void OnTriggerEnter(Collider other)
+    {
 
+        if (other.tag == "Player")
+        {
+            priestHealth -= 1;
+            if (priestHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+    }
 
 	void OnTriggerStay(Collider other)
 	{
@@ -32,10 +46,10 @@ public class PriestScript : MonoBehaviour {
 	void Start () {
 
 
-		target = GameObject.FindWithTag ("Player").transform;
+        //target = GameObject.FindWithTag ("Player").transform;
+        priestHealth = Random.Range(2, 4);
 
-
-	}
+    }
 
 	// Update is called once per frame
 	void Update () {
