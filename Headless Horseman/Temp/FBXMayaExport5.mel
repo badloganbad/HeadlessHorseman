@@ -1,0 +1,23 @@
+print "Starting maya loading and fbx conversion \n";
+	
+if (`file -q -exists "/Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Assets/primary assets/house/house.mb"`)
+{		
+	file -o "/Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Assets/primary assets/house/house.mb";
+	FBXExportEmbeddedTextures -v false;
+	// FBXExportHardEdges -v true;
+	FBXExportApplyConstantKeyReducer -v false;
+	FBXExportShowUI -v false;
+
+	print "Before fbx export\n";
+	FBXExport -f "/Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/ExportedFBXFile.fbx";
+	print "after fbx export\n";
+}
+else
+	print "Could not open Maya file.";
+
+
+system ("rm \"/Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/CommandPipe\"");
+
+$donepipeKill = `fopen "/Users/Phillipbadgett/HeadlessHorseman/Headless Horseman/Temp/SyncPipeKill" "w"`;
+fwrite $donepipeKill "Done";
+fclose $donepipeKill;
